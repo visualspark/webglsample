@@ -1,0 +1,28 @@
+{
+  "name": "Holler WebGL Test",
+  "authors": [
+    "Stephen Macchia - stephen@visualspark.com.au"
+  ],
+  "description": "Holler WebGL test",
+  "main": "index.html",
+  "keywords": [
+    "webgl"
+  ],
+  "license": "MIT",
+  "homepage": "visualspark.com.au",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stats": "https://github.com/mrdoob/stats.js/",
+    "three.js": "threejs#*",
+    "threex.rendererstats": "https://github.com/jeromeetienne/threex.rendererstats/archive/master.zip",
+    "stats.js": "*",
+    "threex.domevents": "*"
+  }
+}
