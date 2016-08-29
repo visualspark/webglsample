@@ -27,7 +27,6 @@
         // global switch to compile stats or not
         var debug = true
             , boxes = 10
-            , newCameraPos = {}
 
             // stats
             , stats, rendererStats
@@ -108,8 +107,7 @@
             domEvents.addEventListener(box, 'click', function(event){
                 var pos = event.target.position
                     , newX = Math.floor(pos.x)
-                    , newY = Math.floor(pos.y)
-                    , newZ = Math.floor(pos.z);
+                    , newY = Math.floor(pos.y);
 
                 TweenLite.to( camera.position, 1.5, {x: newX, y:newY });
 
