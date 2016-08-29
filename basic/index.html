@@ -14,6 +14,7 @@
     <script src="../bower_components/stats.js/src/Stats.js" type="text/javascript"> </script>
     <script src="../bower_components/threex.rendererstats/threex.rendererstats.js" type="text/javascript"></script>
     <script src="../bower_components/threex.domevents/threex.domevents.js" type="text/javascript"></script>
+    <script src="../bower_components/gsap/src/minified/TweenLite.min.js" type="text/javascript"></script>
 
     <script src="../bower_components/three.js/examples/js/controls/OrbitControls.js"></script>
 </head>
@@ -26,6 +27,7 @@
         // global switch to compile stats or not
         var debug = true
             , boxes = 10
+            , newCameraPos = {}
 
             // stats
             , stats, rendererStats
@@ -39,6 +41,9 @@
         init();
         render();
 
+        /**
+         *
+         */
         function init() {
 
             // Setup three scene and camera
@@ -80,6 +85,9 @@
             }
         }
 
+        /**
+         *
+         */
         function createBox(box){
 
             var  random1 = Math.random()
@@ -93,19 +101,17 @@
                 random1 = -random1;
             }
 
-            box.rotation.x = Math.ceil(random1 * 360);
-            box.rotation.y = Math.ceil(random2 * 360);
             box.position.x = Math.ceil(random2 * window.innerWidth);
             box.position.y = Math.ceil(random1 * window.innerHeight);
             box.position.z = Math.ceil(random1 * 500);
 
             domEvents.addEventListener(box, 'click', function(event){
+                var pos = event.target.position
+                    , newX = Math.floor(pos.x)
+                    , newY = Math.floor(pos.y)
+                    , newZ = Math.floor(pos.z);
 
-                console.log('you clicked on the mesh', event);
-                camera.position.x = event.target.position.x ;
-                camera.position.y = event.target.position.y;
-                camera.position.z = event.target.position.z+1000;
-
+                TweenLite.to( camera.position, 1.5, {x: newX, y:newY });
 
             }, false);
 
@@ -134,6 +140,9 @@
         }
 
 
+        /**
+         * @description render loop
+         */
         function render() {
 
             if( debug ){
@@ -141,8 +150,6 @@
                 rendererStats.update(renderer);
             }
             controls.update();
-            //mesh.rotation.x += 0.01;
-            //mesh.rotation.y += 0.02;
 
             renderer.render( scene, camera );
 

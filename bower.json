@@ -23,6 +23,7 @@
     "three.js": "threejs#*",
     "threex.rendererstats": "https://github.com/jeromeetienne/threex.rendererstats/archive/master.zip",
     "stats.js": "*",
-    "threex.domevents": "*"
+    "threex.domevents": "*",
+    "gsap": "^1.19.0"
   }
 }
